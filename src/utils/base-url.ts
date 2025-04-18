@@ -1,2 +1,1 @@
-export const BASE_URL =
-  import.meta.env.VITE_BASE_API_URL || 'https://test-my-profile.vercel.app';
+export const BASE_URL = import.meta.env.VITE_BASE_API_URL;
