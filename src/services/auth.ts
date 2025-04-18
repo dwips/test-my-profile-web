@@ -9,3 +9,11 @@ export const useRegister = () => {
     },
   });
 };
+
+export const useLogin = () => {
+  return useMutation({
+    mutationFn: (data: any) => {
+      return fetch.post('http://localhost:3000/api/login', data);
+    },
+  });
+};

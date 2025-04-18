@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
+import { Loader2 } from 'lucide-react';
 
 import FormInput from '@/components/elements/form-input';
 import FormLabel from '@/components/elements/form-label';
@@ -11,10 +12,11 @@ import { FormSchema, schema } from './schema';
 
 interface FormLoginProps {
   onSubmit: (data) => void;
+  isLoading?: boolean;
 }
 
 function FormLogin(props: FormLoginProps) {
-  const { onSubmit } = props;
+  const { onSubmit, isLoading } = props;
 
   const {
     handleSubmit,
@@ -34,8 +36,6 @@ function FormLogin(props: FormLoginProps) {
   useEffect(() => {
     trigger();
   }, []);
-
-  console.log(errors);
 
   const isSubmitDisabled = Object.keys(errors).length > 0;
 
@@ -95,6 +95,7 @@ function FormLogin(props: FormLoginProps) {
           }`}
           type="submit"
         >
+          {isLoading && <Loader2 className="mr-2 animate-spin" />}
           Login
         </Button>
       </FormLabel>

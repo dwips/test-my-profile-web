@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { getToken } from './storage';
+import { removeAccessToken, getAccessToken } from './storage';
 
 const instance = axios.create({
   headers: {
@@ -11,11 +11,11 @@ instance.CancelToken = axios.CancelToken;
 instance.isCancel = axios.isCancel;
 
 instance.interceptors.request.use(async function (config) {
-  // let token = getToken();
+  let token = getAccessToken();
 
-  // if (token) {
-  //   config.headers['Authorization'] = `Bearer ${token}`;
-  // }
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`;
+  }
 
   return config;
 });
@@ -39,6 +39,8 @@ instance.interceptors.response.use(
 
     if (err.response && err.response.data) {
       if (err.response.status === 401) {
+        removeAccessToken();
+
         window.location.href = '/login';
       }
 
