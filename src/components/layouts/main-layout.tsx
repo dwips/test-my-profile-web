@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { removeAccessToken } from '@/utils/storage';
+import Logo from '../elements/logo';
 
 function MainLayout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen flex flex-col bg-white p-4">
       <header className="flex justify-between items-center">
-        <div></div>
+        <div>
+          <Logo />
+        </div>
 
         <div>
           <DropdownMenu>

@@ -75,7 +75,7 @@ function Profile() {
   };
 
   return (
-    <div className="flex gap-14 mt-14">
+    <div className="flex flex-col md:flex-row lg:gap-14 gap-10 mt-10 md:mt-14 relative">
       <div className="mt-10">
         <Menu
           activeMenu={activeMenu}
@@ -95,7 +95,7 @@ function Profile() {
       </div>
       <div>
         <button
-          className="cursor-pointer underline flex gap-2 items-center mt-2"
+          className="cursor-pointer underline flex gap-2 items-center mt-2 absolute lg:static top-[-30px] right-0"
           onClick={() => setIsEdit((prev) => !prev)}
         >
           {isEdit ? (

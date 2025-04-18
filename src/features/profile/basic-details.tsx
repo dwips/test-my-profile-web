@@ -47,7 +47,7 @@ function BasicDetails(props: BasicDetailsProps) {
   });
 
   return (
-    <div className="flex gap-10">
+    <div className="flex flex-col md:flex-row gap-10">
       <div>
         <Controller
           control={control}
@@ -61,7 +61,7 @@ function BasicDetails(props: BasicDetailsProps) {
 
             if (isEdit) {
               return (
-                <label className="cursor-pointer flex flex-col items-center">
+                <label className="cursor-pointer inline-flex md:flex flex-col items-center">
                   {value ? (
                     <img
                       src={value}

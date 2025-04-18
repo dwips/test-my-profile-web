@@ -22,15 +22,16 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route element={<AuthorizedRoutes />}>
             <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/"
+              element={
+                <div>
+                  <h1>Home</h1>
+                </div>
+              }
+            />
           </Route>
-          <Route
-            path="/"
-            element={
-              <div>
-                <h1>Home</h1>
-              </div>
-            }
-          />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </QueryClientProvider>
