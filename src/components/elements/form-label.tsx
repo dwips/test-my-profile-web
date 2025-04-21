@@ -21,7 +21,10 @@ function FormLabel({
         className
       )}
     >
-      <label htmlFor={htmlFor} className="w-[100px] text-left sm:text-right">
+      <label
+        htmlFor={htmlFor}
+        className="w-[150px] text-left sm:text-right whitespace-nowrap"
+      >
         {label}
         {required ? '*' : ''}
       </label>{' '}
