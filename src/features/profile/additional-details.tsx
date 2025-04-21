@@ -42,8 +42,6 @@ function AdditionalDetails(props: AdditionalDetailsProps) {
     },
   });
 
-  console.log('data', data);
-
   return (
     <div className="flex gap-10">
       <form

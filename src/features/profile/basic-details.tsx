@@ -78,7 +78,6 @@ function BasicDetails(props: BasicDetailsProps) {
                       const file = e.target.files?.[0];
 
                       fileToBase64(file as File).then((base64) => {
-                        console.log('base64', base64);
                         onChange(base64 as string);
                       });
                     }}

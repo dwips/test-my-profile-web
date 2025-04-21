@@ -28,8 +28,6 @@ function Register() {
         setShowModal(true);
       },
       onError: (error) => {
-        console.log(error);
-
         setIsLoading(false);
         toast.warning(error.message);
       },
