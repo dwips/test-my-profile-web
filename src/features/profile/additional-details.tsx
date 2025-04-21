@@ -1,7 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CalendarIcon } from 'lucide-react';
-import { format } from 'date-fns';
+import { format, isValid } from 'date-fns';
 
 import LabelProfile from '@/components/elements/label-profile';
 import { AdditionalDetailsSchema, AdditionalDetailsType } from './schema';
@@ -34,11 +34,15 @@ function AdditionalDetails(props: AdditionalDetailsProps) {
       address: data?.address || '',
       country: data?.country || '',
       postalCode: data?.postalCode || '',
-      dateOfBirth: new Date(data?.dateOfBirth) || undefined,
+      dateOfBirth: isValid(data?.dateOfBirth)
+        ? new Date(data?.dateOfBirth)
+        : undefined,
       gender: data?.gender || undefined,
       maritalStatus: data?.maritalStatus || undefined,
     },
   });
+
+  console.log('data', data);
 
   return (
     <div className="flex gap-10">
@@ -147,7 +151,7 @@ function AdditionalDetails(props: AdditionalDetailsProps) {
                         )}
                       >
                         <CalendarIcon />
-                        {field.value ? (
+                        {isValid(field.value) ? (
                           format(field.value, 'PPP')
                         ) : (
                           <span>Pick a date</span>
@@ -166,7 +170,7 @@ function AdditionalDetails(props: AdditionalDetailsProps) {
                 );
               }
 
-              return field.value ? format(field.value, 'PPP') : '-';
+              return isValid(field.value) ? format(field.value, 'PPP') : '-';
             };
 
             return (
